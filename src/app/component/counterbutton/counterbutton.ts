@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { decrement, increment, reset } from '../../shared/store/counter.actions';
+import { changename, decrement, increment, reset } from '../../shared/store/counter.actions';
+import { MatButtonModule } from '@angular/material/button';
+import { CounterModel } from '../../shared/store/counter.model';
 
 @Component({
   selector: 'app-counterbutton',
   standalone: true, 
-  imports: [],
+  imports: [
+    MatButtonModule
+  ],
   templateUrl: './counterbutton.html',
   styleUrls: ['./counterbutton.css']
 })
 export class Counterbutton {
 
-  constructor(private store:Store<{counter:{counter:number}}>){
+  constructor(private store:Store<{counter:CounterModel}>){
 
   }
 
@@ -25,6 +29,10 @@ export class Counterbutton {
 
    onReset(){
       this.store.dispatch(reset())
+  }
+
+  onRename(){
+    this.store.dispatch(changename({channel:'welcome to shakeeb'}))
   }
 
 }

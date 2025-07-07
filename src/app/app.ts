@@ -3,14 +3,23 @@ import { RouterOutlet } from '@angular/router';
 import { Counterbutton } from './component/counterbutton/counterbutton';
 import { Counterdisplay } from './component/counterdisplay/counterdisplay';
 import { MaterialModule } from './Material.Module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { CustomercounterComponent } from './component/customercounter/customercounter.component';
+import { FormsModule } from '@angular/forms';
+import { MenuheaderComponent } from './component/menuheader/menuheader.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,Counterbutton,Counterdisplay,MaterialModule,BrowserAnimationsModule,BrowserModule
+    CommonModule,
+    RouterOutlet,
+    MaterialModule,
+    MatButtonModule,
+    FormsModule,
+    MenuheaderComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']

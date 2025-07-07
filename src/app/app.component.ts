@@ -1,13 +1,12 @@
 // app.component.ts
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Counterbutton } from "./component/counterbutton/counterbutton";
-import { Counterdisplay } from "./component/counterdisplay/counterdisplay";
+import { MenuheaderComponent } from "./component/menuheader/menuheader.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Counterbutton, Counterdisplay],
+  imports: [RouterOutlet, MenuheaderComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
