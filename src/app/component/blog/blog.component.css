@@ -32,3 +32,10 @@ h1 {
   color: #2c3e50;
   font-weight: bold;
 }
+
+.mdc-button{
+  margin: 5px;
+}
+.mat-icon{
+  text-align: center;
+}

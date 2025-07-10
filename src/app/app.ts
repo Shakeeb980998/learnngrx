@@ -6,7 +6,7 @@ import { MaterialModule } from './Material.Module';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { CustomercounterComponent } from './component/customercounter/customercounter.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuheaderComponent } from './component/menuheader/menuheader.component';
 
 
@@ -19,7 +19,8 @@ import { MenuheaderComponent } from './component/menuheader/menuheader.component
     MaterialModule,
     MatButtonModule,
     FormsModule,
-    MenuheaderComponent
+    MenuheaderComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']

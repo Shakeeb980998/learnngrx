@@ -13,6 +13,9 @@ import { MatIconModule} from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AppStateModel } from '../../shared/store/Global/AppState.model';
+import { MatDialog } from '@angular/material/dialog';
+import { AddblogComponent } from '../addblog/addblog.component';
+import { delteblog } from '../../shared/store/Blog/Blog.actions';
 
 
 @Component({
@@ -31,7 +34,7 @@ import { AppStateModel } from '../../shared/store/Global/AppState.model';
 })
 export class BlogComponent implements OnInit{
 
-  constructor(private store:Store<AppStateModel>){
+  constructor(private store:Store<AppStateModel>, private dialog:MatDialog){
 
   }
 
@@ -42,6 +45,31 @@ export class BlogComponent implements OnInit{
       this.bloglist = item;
       console.log(this.bloglist);
     })
+  }
+
+  AddBlog(){
+    this.openpopup(0,'add Blog');
+  }
+
+  openpopup(id:any,title:any,isedit=false){
+    this.dialog.open(AddblogComponent,{
+      width:'40%',
+      data :{
+        id:id,
+        title:title,
+        isedit:isedit
+      }
+    })
+  }
+
+  UpdateBlog(id:any){
+    this.openpopup(id,'Edit Blog',true);
+  }
+
+  RemoveBlog(id:any){
+      if(confirm("are you sure want to remove")){
+        this.store.dispatch(delteblog({id:id}));
+      }
   }
 
 
