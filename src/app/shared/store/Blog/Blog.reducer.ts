@@ -1,26 +1,26 @@
 import { createReducer,on } from "@ngrx/store";
-import { Blogstate } from "./Blog.state";
-import { addblog, delteblog, loadblog, updateblog } from "./Blog.actions";
+import { BlogState } from "./Blog.state";
+import { addblog, addblogsuccess, delteblog, loadblog, loadblogfail, loadblogsuccess, updateblog } from "./Blog.actions";
 import { BlogModel } from "./Blog.model";
 
 
 
 
-const _BlogReducer = createReducer(Blogstate,
+const _BlogReducer = createReducer(BlogState,
   on(loadblog, (State) => {
     return {
       ...State
     };
   }),
 
-   on(addblog, (State,action) => {
-    const _blog={...action.bloginput}
-    _blog.id = State.bloglist.length+1;
-    return {
-      ...State,
-      bloglist:[...State.bloglist,_blog]
-    };
-  }),
+  //  on(addblog, (State,action) => {
+  //   const _blog={...action.bloginput}
+  //   _blog.id = State.bloglist.length+1;
+  //   return {
+  //     ...State,
+  //     bloglist:[...State.bloglist,_blog]
+  //   };
+  // }),
 
 
     on(updateblog, (State,action) => {
@@ -45,13 +45,38 @@ const _BlogReducer = createReducer(Blogstate,
       ...State,
       bloglist:updatedblog
     };
-  })
+  }),
+  on(loadblogsuccess, (State,action) => {
+    return {
+      ...State,
+      bloglist:[...action.bloglist],
+      Errormessage : ''
+    }
+  }),
+
+   on(loadblogfail, (State,action) => {
+
+    return {
+      ...State,
+      bloglist:[],
+      Errormessage:action.Errortext.message
+    }
+  }),
+     on(addblogsuccess, (State,action) => {
+    const _blog={...action.bloginput}
+    return {
+      ...State,
+      bloglist:[...State.bloglist,_blog]
+    };
+  }),
+
 
 
 
 );
 
-export function BlogReducer(state: any, action: any) {
+export function blogReducer(state: any, action: any) {
   return _BlogReducer(state, action);
 }
+
 
