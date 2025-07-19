@@ -21,3 +21,8 @@ export const getblogbyid = (blogid: number) => createSelector(
 export const getbloginfo = createSelector(getblogstate,(state) => {
     return state;
 })
+
+// export const getspinerstate = createSelector(getblogstate,(state) => {
+//     return state.isloaded;
+// })
+

@@ -8,6 +8,10 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatIconModule} from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     exports:[
@@ -18,7 +22,11 @@ import { MatDialogModule } from '@angular/material/dialog';
            MatToolbarModule,
            MatMenuModule,
            MatIconModule,
-           MatDialogModule
+           MatDialogModule,
+           MatSnackBarModule,
+           MatProgressSpinnerModule,
+           CommonModule,
+           FormsModule
     ]
 })
 

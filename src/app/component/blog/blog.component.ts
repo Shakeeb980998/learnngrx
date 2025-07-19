@@ -16,6 +16,7 @@ import { AppStateModel } from '../../shared/store/Global/AppState.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddblogComponent } from '../addblog/addblog.component';
 import { delteblog, loadblog } from '../../shared/store/Blog/Blog.actions';
+import { loadspiner } from '../../shared/store/Global/App.Actions';
 
 
 @Component({
@@ -42,12 +43,16 @@ export class BlogComponent implements OnInit{
   bloginfor !: Blogs;
   
   ngOnInit(): void {
-    this.store.dispatch(loadblog());
-    
+    this.store.dispatch(loadspiner({isloaded:true}));
+    setTimeout(() =>{
+      this.store.dispatch(loadblog());
     this.store.select(getbloginfo).subscribe(item => {
       this.bloginfor = item;
       console.log(this.bloginfor);
     });
+    this.store.dispatch(loadspiner({isloaded:false}));
+    },2000);
+   
   }
 
   AddBlog(){
@@ -71,7 +76,10 @@ export class BlogComponent implements OnInit{
 
   RemoveBlog(id:any){
       if(confirm("are you sure want to remove")){
-        this.store.dispatch(delteblog({id:id}));
+      this.store.dispatch(loadspiner({isloaded:true}));
+        setTimeout(() =>{
+            this.store.dispatch(delteblog({id:id}));
+        },2000)
       }
   }
 

@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CustomercounterComponent } from './component/customercounter/customercounter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuheaderComponent } from './component/menuheader/menuheader.component';
+import { LoadingspinerComponent } from './component/loadingspiner/loadingspiner.component';
 
 
 @Component({
@@ -20,8 +21,9 @@ import { MenuheaderComponent } from './component/menuheader/menuheader.component
     MatButtonModule,
     FormsModule,
     MenuheaderComponent,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    LoadingspinerComponent
+],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

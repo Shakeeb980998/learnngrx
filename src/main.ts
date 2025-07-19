@@ -14,6 +14,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
 import { routes } from './app/app.routes';
 import { AppState } from './app/shared/store/Global/App.state';
+import { AppEffect } from './app/shared/store/Global/app.Effect';
 
 bootstrapApplication(App, {
   providers: [
@@ -22,7 +23,7 @@ bootstrapApplication(App, {
     importProvidersFrom(BrowserAnimationsModule),
     provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(EffectsModule.forRoot()), 
-    provideEffects(BlogEffects),                  
+    provideEffects(BlogEffects,AppEffect),                  
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
   ]
 });
